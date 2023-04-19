@@ -7,7 +7,7 @@ describe('Star Wars Search feature', () => {
   });
 
 
-  it('should verify people details after searching for a planet by clicking on search button', () => {
+  it('should verify character details after searching for a planet by clicking on search button', () => {
     cy.fixture('luke.json').then((luke) => {
       searchPage.typeSearchText(luke.name)
       searchPage.clickOnSearchButton();
@@ -52,7 +52,7 @@ describe('Star Wars Search feature', () => {
 
 
 
-  it('should display more than one search result for partial matching people name', () => {
+  it('should display more than one search result for partial matching character name', () => {
     searchPage.typeSearchText('ob')
     searchPage.enterKeyEventOnSearchInput();
     searchPage.getCards().each((card) => {
@@ -77,7 +77,7 @@ describe('Star Wars Search feature', () => {
 
 
   // # Negative scenarios
-  it('should display a "Not Found" message when searching for an invalid people name ', () => {
+  it('should display a "Not Found" message when searching for an invalid character name ', () => {
     searchPage.typeSearchText('xxxxxx')
     searchPage.enterKeyEventOnSearchInput();
     cy.fixture('errorMessages.json').then(message => {
@@ -86,7 +86,7 @@ describe('Star Wars Search feature', () => {
   })
 
 
-  it('should display a "Not Found" message when searching for an invalid plane name', () => {
+  it('should display a "Not Found" message when searching for an invalid planet name', () => {
     selectRadioButton('planets');
     searchPage.typeSearchText('yyyyyy')
     searchPage.enterKeyEventOnSearchInput();
